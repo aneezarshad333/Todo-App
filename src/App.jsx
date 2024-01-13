@@ -17,9 +17,11 @@ function App() {
   const handleAddTodo = (e) => {
     e.preventDefault()
     const task = {}
-    Object.assign(task, { name: `${todo}` })
-    Object.assign(task, { check: 'false' })
-    dispatch(addTask(task))
+    if (!!todo) {
+      Object.assign(task, { name: `${todo}` })
+      Object.assign(task, { check: 'false' })
+      dispatch(addTask(task))
+    }
     setTodo('')
   }
 
@@ -34,12 +36,12 @@ function App() {
           </form>
           <TodoItem />
           {tasks.length > 0 ?
-           <div className='d-flex justify-content-between mt-3'>
-            <p>Total Complete Items: {completedTask}</p>
-            <button className="btn btn-danger" style={{ color: 'white' }} onClick={()=>dispatch(emptyList())}>Empty List</button>
-            </div> 
-           : 
-           <div></div>}
+            <div className='d-flex justify-content-between mt-3'>
+              <p>Total Complete Items: {completedTask}</p>
+              <button className="btn btn-danger" style={{ color: 'white' }} onClick={() => dispatch(emptyList())}>Empty List</button>
+            </div>
+            :
+            <div></div>}
         </div>
       </div>
     </>

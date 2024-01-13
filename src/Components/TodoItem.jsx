@@ -11,21 +11,21 @@ function TodoItem() {
                 {tasks &&
                     tasks.map((task, index) => (
                         task.check == 'true' ?
-                        <div className='d-flex justify-content-between align-items-center p-2' style={{backgroundColor:'#90EE90'}}>
-                            <div className='align-items-center'>
-                                <input type="checkbox" onClick={()=>dispatch(updateCheck(task.name))}/>
-                                <span className='ms-2'>{task.name}</span>
+                            <div key={index} className='d-flex justify-content-between align-items-center p-2' style={{ backgroundColor: '#90EE90' }}>
+                                <div className='align-items-center'>
+                                    <input type="checkbox" onClick={() => dispatch(updateCheck(task.name))} />
+                                    <span className='ms-2'>{task.name}</span>
+                                </div>
+                                <button className="btn btn-danger" onClick={() => dispatch(deleteTask(task.name))}>Delete</button>
                             </div>
-                            <button className="btn btn-danger" onClick={() => dispatch(deleteTask(task.name))}>Delete</button>
-                        </div>
-                        :
-                        <div className='d-flex justify-content-between align-items-center p-2'>
-                            <div className='align-items-center'>
-                                <input type="checkbox" onClick={()=>dispatch(updateCheck(task.name))}/>
-                                <span className='ms-2'>{task.name}</span>
+                            :
+                            <div key= {index}className='d-flex justify-content-between align-items-center p-2'>
+                                <div className='align-items-center'>
+                                    <input type="checkbox" onClick={() => dispatch(updateCheck(task.name))} />
+                                    <span className='ms-2'>{task.name}</span>
+                                </div>
+                                <button className="btn btn-danger" onClick={() => dispatch(deleteTask(task.name))}>Delete</button>
                             </div>
-                            <button className="btn btn-danger" onClick={() => dispatch(deleteTask(task.name))}>Delete</button>
-                        </div>
                     ))
                 }
             </div>
